@@ -8,32 +8,11 @@ import {  DataService } from './services/data/data.service';
 })
 export class AppComponent {
 
-  constructor(private data: DataService) {}
-  count?: any;
-
-  menuItems = [
-    {
-      title: 'Home',
-      path: '/'
-    },
-    
-    {
-      title: 'About',
-      path: '/about'
-    },
-    {
-      title: 'Search',
-      path: '/search'
-    }
-  ]
+  constructor() {}
+ 
 
   ngOnInit() {
-    this.data.getCounter().subscribe((data) => {
-      this.count = data;
-    });
+
   }
 
-  onMenuClicked(data?: any) {
-    //
-  }
 }

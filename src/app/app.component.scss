@@ -1,0 +1,42 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    color: white;
+    position: relative;
+    z-index: 1;
+    nav{
+        ul{margin: 0;
+           padding: 0;
+           list-style: none;
+           display: flex;
+            li{
+                a{
+                    text-decoration: none;
+                    color: white;
+                    padding: 0 20px;
+                }
+            }
+        }
+
+    }
+}
+
+.hero{
+    background-image: url(../assets/background.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

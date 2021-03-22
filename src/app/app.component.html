@@ -1,11 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <div>{{ count }}</div>
-      <app-navigation (menuClicked)="onMenuClicked($event)" [menuItems]="menuItems"></app-navigation>
-    </div>
-    <div class="col-9">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+
+<div>
+ <header>
+   <div class="logo">
+     <img src="../assets/logo.png" alt="logo">
+   </div>
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Products</a></li>
+    <li>
+      <a href="#">
+        <img src="../assets/fa-shopping-cart.png" alt="">
+      </a></li>
+  </ul>
+
+</nav>
+
+ </header>
+
+ <div class="hero">
+<h1>Our clothing , your comfort</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+  magna aliqua.</p>
+ <div class="scroll">
+   <img src="../assets/fa-chevron-down.png" alt="">
+ </div>
+ </div>
+
+ <div class="filter">
+
+ </div>
+
+ <div class="catalog">
+
+ </div>
+
+ <div class="about">
+
+ </div>
+
+ <footer>
+
+ </footer>
 </div>
