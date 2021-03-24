@@ -2,7 +2,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 15px;
+    padding: 40px 50px;
     color: white;
     position: relative;
     z-index: 1;
@@ -28,7 +28,7 @@ header{
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 82vh;
     position: absolute;
     top: 0;
     right: 0;
@@ -39,4 +39,21 @@ header{
     justify-content: center;
     align-items: center;
     text-align: center;
+    h1 {
+        max-width: 800px;
+        font-size: 60px;
+        color: #fff;
+    }
+
+    p {
+        max-width: 586px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #fff;
+    }
+
+    .scroll {
+        position: absolute;
+        bottom: 50px;
+    }
 }

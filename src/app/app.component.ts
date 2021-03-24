@@ -8,7 +8,14 @@ import {  DataService } from './services/data/data.service';
 })
 export class AppComponent {
 
-  constructor() {}
+ 
+
+  constructor() {
+    function myFunction() {
+      // Get the checkbox
+      var checkBox = document.getElementById("myCheck");
+    }
+  }
  
 
   ngOnInit() {
