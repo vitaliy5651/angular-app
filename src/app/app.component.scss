@@ -57,3 +57,22 @@ header{
         bottom: 50px;
     }
 }
+
+.filter{
+    position: absolute;
+    bottom: 69px;
+    left: 30px;
+    display: flex;
+    #myCheck{
+        width: 25px;
+        height: 24px;
+        border-radius: 3px;
+    }
+    p{
+        width: 35px;
+        height: 13px;
+        color: #333333;
+        font-family: "Quicksand Bold";
+        text-transform: uppercase;
+    }
+}
