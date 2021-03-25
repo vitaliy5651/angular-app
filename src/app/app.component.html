@@ -28,12 +28,35 @@
  </div>
 
  <div class="filter">
-  <input type="checkbox" id="myCheck" onclick="myFunction()">
+  
+  <input type="checkbox" id="myCheck">
   <p>Men</p>
+  <input type="checkbox" id="myCheck">
+  <p>Women</p>
+  <input type="checkbox" id="myCheck">
+  <p>Children</p>
+  <button>See all products</button>
  </div>
 
- <div class="catalog">
-
+ <div class="catalog container">
+<div class="header">
+  <div class="header-text">Men</div>
+</div>
+<div class="items">
+  <drag-scroll [scrollbar-hidden]="true">
+    <div *ngFor="let item of slideritems" drag-scroll-item class="item">
+      <div class="top">
+        <div class="size">size</div>
+      <div class="color">color</div>
+      </div>
+      <div class="img"><img src="../assets/T-shirt.png" alt=""></div>
+      <div class="bottom">
+        <div class="name">Name</div>
+        <div class="price">Price</div>
+      </div>
+    </div>
+  </drag-scroll>
+  </div>
  </div>
 
  <div class="about">
