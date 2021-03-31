@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { DragScrollComponent } from 'ngx-drag-scroll';
 
 @Component({
   selector: 'app-slider',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderComponent implements OnInit {
 
-  constructor() { }
+  @Input() slides: any[] = [];
+  @Input() header: string ='';
 
-  ngOnInit(): void {
+
+  @ViewChild('nav', {read: DragScrollComponent}) ds!: DragScrollComponent;
+
+  ngOnInit(): void {}
+
+  // ngAfterViewInit() {
+  //   this.ds.moveTo(0);
+  // }
+
+  moveLeft() {
+    this.ds.moveLeft();
+  }
+  moveRight() {
+    this.ds.moveRight();
   }
 
 }

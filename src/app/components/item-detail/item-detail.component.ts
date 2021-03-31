@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../../services/api.service';
-import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-item-detail',
@@ -11,17 +9,11 @@ import { User } from '../../interfaces/user';
 export class ItemDetailComponent implements OnInit {
 
   id: string = '';
-  user!: User;
 
-  constructor(private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') as string;
-    this.api.getUserById(this.id)
-    .subscribe((user) => {
-      console.log(user);
-      this.user = user;
-    });
   }
 
 }
