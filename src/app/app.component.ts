@@ -8,27 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent {
-
- public slideritems: Array<{name: string, price: number}> = [
+ public sliderItems: Array<{name: string, price: number,image: string}> = [
    {
      name: 'T-shirt',
-     price: 30,
+     price: 5,
+     image:'../assets/T-shirt.png'
    },
    {
-    name: 'Test',
-    price: 50,
+    name: 'Pants FORCLAZ',
+    price: 30,
+    image:'../assets/Pants.png'
    },
    {
-    name: 'Hat',
-    price: 20,
+    name: 'BACKPACK',
+    price: 60,
+    image:'../assets/back.png'
    },
    {
     name: 'Panto',
     price: 40,
+    image:''
    },
    {
     name: 'Desk',
     price: 70,
+    image:''
    },
  ]
 

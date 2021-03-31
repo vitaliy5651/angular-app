@@ -44,15 +44,19 @@
 </div>
 <div class="items">
   <drag-scroll [scrollbar-hidden]="true">
-    <div *ngFor="let item of slideritems" drag-scroll-item class="item">
-      <div class="top">
-        <div class="size">size</div>
-      <div class="color">color</div>
-      </div>
-      <div class="img"><img src="../assets/T-shirt.png" alt=""></div>
-      <div class="bottom">
-        <div class="name">Name</div>
-        <div class="price">Price</div>
+    <div drag-scroll-item *ngFor="let item of sliderItems">
+      <div  class="item">
+        <div class="top">
+          <div class="size">size</div>
+          <div class="color">color</div>
+        </div>
+        <div class="img">
+          <img drag-scroll-item src="{{item.image}}"/>
+        </div>
+        <div class="bottom">
+          <div class="name">{{ item.name }}</div>
+          <div class="price">{{ item.price | currency:'EUR' }}</div>
+        </div>
       </div>
     </div>
   </drag-scroll>
@@ -60,7 +64,10 @@
  </div>
 
  <div class="about">
+<div class="about us">
 
+  
+</div>
  </div>
 
  <footer>
