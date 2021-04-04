@@ -33,13 +33,12 @@
 }
 
 .filter{
-    position: relative;
-    display: flex;
     width: 100%;
     padding-left: 50px;
     padding-top: 60px;
     padding-bottom: 50px;
     background-color: #bbbdbe;
+    display: flex;
     &-content{
         display: flex;
         justify-content: space-between;
@@ -66,6 +65,10 @@
     label{
         user-select: none;
         cursor: pointer;
+        font-weight: 600;
+        text-transform: uppercase;
+        display: flex;
+        margin-left: 45px;
     }
 }
 .catalog-container{

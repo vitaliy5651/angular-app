@@ -3,10 +3,10 @@
   </div>
   <div class="items">
     <div class="buttons">
-        <button (click)="moveLeft()">Left</button>
-        <button (click)="moveRight()">Right</button>
+        <button class= "Left" (click)="moveLeft()">Left</button>
+        <button class="Right" (click)="moveRight()">Right</button>
       </div>
-    <drag-scroll [scrollbar-hidden]="true">
+    <drag-scroll #nav [scrollbar-hidden]="true">
       <div class="drag-item" drag-scroll-item *ngFor="let item of slides">
         <div  class="item">
           <div class="top">
