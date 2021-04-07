@@ -10,11 +10,39 @@ import { CartService } from '../../services/cart/cart.service';
 export class CartComponent implements OnInit {
 
   items: any[] = [];
+  
 
   constructor(private cart: CartService) { }
 
   ngOnInit(): void {
-    this.items = this.cart.getCartItems();
+    this.items =this.groupItem(this.cart.getCartItems()); 
   }
+
+  groupItem(arr: any[]): any[]{
+        const result: any[] = [];
+        const ids: any[] = [];
+       for(let item of arr){
+         if(ids.includes(item.id)){
+          result.forEach((el, i)=>{
+            if(el.id === item.id){
+              result[i].amount++;
+            }
+          })
+        }else{
+          result.push({...item, amount: 1 });
+          ids.push(item.id);
+        }
+       }
+    return result;
+ }
+
+ addOne(id: number){
+   this.items = this.items.map((el)=>{
+     if(el.id === id){
+       el.amount++;
+     }
+     return el;
+   })
+ }
 
 }
