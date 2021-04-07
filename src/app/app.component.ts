@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from './services/cart/cart.service';
 
 
 
@@ -9,5 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent {
+  cartCounter: number = 0;
 
+  constructor(private cart: CartService) {}
+
+  ngOnInit() {
+    this.cart.getSubscription().subscribe((data) => {
+      this.cartCounter = data;
+    })
+  }
 }
