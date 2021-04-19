@@ -27,7 +27,7 @@ export class ItemDetailComponent implements OnInit {
   }
 
   addItemToCart(details: any) {
-    this.cart.setItemsInCart(details);
+    this.cart.addItemsInCart(details);
   }
 
 }

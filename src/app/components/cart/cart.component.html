@@ -2,7 +2,7 @@
     <div class="panel" *ngFor="let item of items">
 <div class="info">{{item.name}} {{item.price | currency: 'EUR'}}</div>
 <div class="actions">
-    <button>-</button>
+    <button *ngIf = "item.amount > 0"  (click) = "removeOne(item.id)">-</button>
     {{item.amount}}
     <button (click) = "addOne(item.id)">+</button>
 </div>
