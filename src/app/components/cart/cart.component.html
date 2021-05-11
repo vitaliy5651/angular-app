@@ -7,4 +7,21 @@
     <button (click) = "addOne(item.id)">+</button>
 </div>
     </div>
+    <form [formGroup]="orderForm" (ngSubmit) = "onSubmit()">
+        <input type="text" formControlName = "name">
+        <div class="error" *ngIf="orderForm.controls.errors && orderForm.touched">Field is required</div>
+        <br>
+        <input type="text" formControlName = "address">
+        <div>
+    <label>
+        Cash
+        <input type="radio" value="Cash" formControlName = "paymentType">
+    </label>
+    <br>
+    <label>
+        Card
+        <input type="radio" value="Card" formControlName = "paymentType">
+    </label>
+        </div>
+    </form>
 </div>

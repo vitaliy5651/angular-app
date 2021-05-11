@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -8,14 +8,24 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
-  items: any[] = [];
+  orderForm = new FormGroup({
+    name : new FormControl ('', [Validators.required]),
+    address : new FormControl (''),
+    paymentType : new FormControl ('')
+  })
   
-
+  items: any[] = [];
   constructor(private cart: CartService) { }
 
   ngOnInit(): void {
-    this.items = this.cart.getCartItems(); 
+    this.items =this.groupItem(this.cart.getCartItems());
+  }
+  onSubmit(){
+    let result = Object.assign(
+      this.orderForm.value,
+      {items: this.cart.getCartItems()}
+    );
+    console.log(result);
   }
 
  addOne(id: number){
