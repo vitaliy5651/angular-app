@@ -21,7 +21,11 @@
 .items {
     margin-left: 30px;
          .buttons{
-            cursor: pointer;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+            cursor: pointer; 
+            text-decoration:none;
+            border: none;
+            outline: none;
+            list-style: none;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
             .left{
                 transform: rotate(-45deg);
                 transform-origin: top right;

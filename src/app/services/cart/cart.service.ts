@@ -14,6 +14,8 @@ export class CartService {
     for(let i of this.items){
       if(i.id === item.id){
         i.amount ? i.amount++ : i.amount = 1;
+      }else {
+        this.items.push(item);
       }
     }
     if(this.items.length === 0){

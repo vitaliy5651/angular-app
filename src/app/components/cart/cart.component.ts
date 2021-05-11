@@ -15,30 +15,8 @@ export class CartComponent implements OnInit {
   constructor(private cart: CartService) { }
 
   ngOnInit(): void {
-    this.items =this.groupItem(this.cart.getCartItems()); 
+    this.items = this.cart.getCartItems(); 
   }
-
-  groupItem(arr: any[]): any[]{
-        const result: any[] = [];
-        const ids: any[] = [];
-       for(let item of arr){
-         if(!item.amount){
-          if(ids.includes(item.id)){
-            result.forEach((el, i)=>{
-              if(el.id === item.id){
-                result[i].amount++;
-              }
-            })
-          }else{
-            result.push({...item, amount: 1 });
-            ids.push(item.id);
-          }
-         }else{
-           result.push();
-         }
-         }
-         return result;
- }
 
  addOne(id: number){
    this.items = this.items.map((el)=>{

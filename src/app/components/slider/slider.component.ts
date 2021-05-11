@@ -16,9 +16,9 @@ export class SliderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // ngAfterViewInit() {
-  //   this.ds.moveTo(0);
-  // }
+  ngAfterViewInit() {
+    this.ds.moveTo(3);
+  }
 
   moveLeft() {
     this.ds.moveLeft();
