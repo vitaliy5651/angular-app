@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -9,42 +9,50 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CartComponent implements OnInit {
   orderForm = new FormGroup({
-    name : new FormControl ('', [Validators.required]),
-    address : new FormControl (''),
-    paymentType : new FormControl ('')
-  })
-  
+    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    address: new FormControl(''),
+    paymentType: new FormControl('')
+  });
+
+
   items: any[] = [];
-  constructor(private cart: CartService) { }
+
+  constructor(private cart: CartService) {
+  }
 
   ngOnInit(): void {
-    this.items =this.groupItem(this.cart.getCartItems());
+    this.items = this.cart.getCartItems();
+    this.orderForm.valueChanges.subscribe((v) => {
+      console.log(this.orderForm.controls['name'])
+    })
   }
-  onSubmit(){
+
+  onSubmit() {
     let result = Object.assign(
-      this.orderForm.value,
-      {items: this.cart.getCartItems()}
+      this.orderForm.value, 
+      { items: this.cart.getCartItems() }
     );
     console.log(result);
   }
 
- addOne(id: number){
-   this.items = this.items.map((el)=>{
-     if(el.id === id){
-       el.amount++;
-     }
-     return el;
-   });
-   this.cart.setItemsInCart(this.items);
- }
+  addOne(id: number) {
+    this.items = this.items.map((el) => {
+      if (el.id === id) {
+        el.amount++;
+      }
+      return el;
+    });
+    this.cart.setItemsInCart(this.items);
+  }
 
   removeOne(id: number){
-    this.items = this.items.map((el)=>{
-      if(el.id === id){
+    this.items = this.items.map((el) => {
+      if (el.id === id) {
         el.amount--;
       }
       return el;
     });
     this.cart.setItemsInCart(this.items);
   }
+
 }

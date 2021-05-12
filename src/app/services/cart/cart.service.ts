@@ -1,47 +1,49 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import{ Product }from '../../interfaces/product';
+import { Product } from '../../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+
   private items: Array<Product> = JSON.parse(localStorage.getItem('items') as string) || [];
   private itemsInCart: number = this.calculateItemsInCart(this.items);
-  private itemsInCart$ = new BehaviorSubject<number>(this.itemsInCart );
+  private itemsInCart$ = new BehaviorSubject<number>(this.itemsInCart);
 
-  public addItemsInCart(item: Product) {
-    if(this.items.length === 0){
-      item.amount = 1; 
+  public addItemInCart(item: Product) {
+    if (this.items.length === 0) {
+      item.amount = 1;
       this.items.push(item);
-    } else{
-      for(let i of this.items){
-        if(i.id === item.id){
+    } else {
+      for (let i of this.items) {
+        if (i.id === item.id) {
           i.amount ? i.amount++ : i.amount = 1;
         }
       }
     }
 
-     let idsArray = this.items.map((item)=>{
-       return item.id;
-     });
-     if(idsArray.includes(item.id)){
+    let idsArray = this.items.map((item) => {
+      return item.id;
+    });
+    if (!idsArray.includes(item.id)) {
+      item.amount = 1;
       this.items.push(item);
-      item.amount = 1; 
-     }
-     console.log('---- ', );
+    }
 
-    this.calculateItemsInCart(this.items);
-    localStorage.setItem('items',JSON.stringify(this.items));
+    this.itemsInCart = this.calculateItemsInCart(this.items);
+    localStorage.setItem('items', JSON.stringify(this.items));
     this.itemsInCart$.next(this.itemsInCart);
   }
 
   public setItemsInCart(items: Array<Product>) {
     this.items = [...items];
     this.itemsInCart = this.calculateItemsInCart(this.items);
-    localStorage.setItem('items',JSON.stringify(this.items));
+    localStorage.setItem('items', JSON.stringify(this.items));
     this.itemsInCart$.next(this.itemsInCart);
+
   }
+
   public getSubscription() {
     return this.itemsInCart$;
   }
@@ -50,11 +52,12 @@ export class CartService {
     return this.items;
   }
 
-  private calculateItemsInCart(items: any[]) : number {
-    let result = items.reduce((total, value)=>{
-      return value.amount ? total + value.amount : total + 1;
-    },0);
-    return result;
+  private calculateItemsInCart(items: any[]): number {
+      let result = items.reduce((total, value) => {
+        return value.amount ? total + value.amount : total + 1;
+      }, 0);
+      console.log(result);
+      return result;
   }
 
   constructor() { }
