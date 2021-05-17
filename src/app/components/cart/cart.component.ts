@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import {  FormGroup, FormControl, Validators } from '@angular/forms';
+import { State, Store } from '@ngrx/store';
+import { addToCart, removeFromCart } from '../../actions/actions.cart';
+
 
 @Component({
   selector: 'app-cart',
@@ -17,14 +20,21 @@ export class CartComponent implements OnInit {
 
   items: any[] = [];
 
-  constructor(private cart: CartService) {
-  }
+  constructor(
+    private cart: CartService,
+    private store: Store<{cart:{amount: number } }>
+    ) {
+      this.cartAmount$ = store.select('')
+    }
 
   ngOnInit(): void {
     this.items = this.cart.getCartItems();
     this.orderForm.valueChanges.subscribe((v) => {
       console.log(this.orderForm.controls['name'])
     })
+
+
+    this.store.subscribe((v) => console.log(v));
   }
 
   onSubmit() {
@@ -36,6 +46,8 @@ export class CartComponent implements OnInit {
   }
 
   addOne(id: number) {
+    this.store.dispatch(addToCart());
+
     this.items = this.items.map((el) => {
       if (el.id === id) {
         el.amount++;
