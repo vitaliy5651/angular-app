@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import {  FormGroup, FormControl, Validators } from '@angular/forms';
-import { State, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../reducers';
+import {selectCartCount} from '../../selectors/selectors.cart'
 import { addToCart, removeFromCart } from '../../actions/actions.cart';
 
 
@@ -20,11 +22,12 @@ export class CartComponent implements OnInit {
 
   items: any[] = [];
 
+  cartAmount$ = this.store.select(selectCartCount);
+
   constructor(
     private cart: CartService,
-    private store: Store<{cart:{amount: number } }>
+    private store: Store<AppState>
     ) {
-      this.cartAmount$ = store.select('')
     }
 
   ngOnInit(): void {
