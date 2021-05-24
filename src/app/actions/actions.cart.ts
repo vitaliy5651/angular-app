@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from '../interfaces/product';
+import { Product } from './../interfaces/product';
+
 
 export const addToCart = createAction('addToCart');
 export const removeFromCart = createAction('removeFromCart');
-export const addItemToCart = createAction('addItemToCart', props<{product:Product}>());
+export const addItemToCart = createAction('addItemToCart', props<Product>());
+export const removeItemFromCart = createAction('removeItemFromCart', props<Product>());

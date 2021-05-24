@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ItemDetailComponent } from './components/item-detail/item-detail.component';
@@ -18,25 +17,27 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { CartEffects } from './effects/effects.cart'
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     HomeComponent,
     AboutComponent,
     ItemDetailComponent,
     SearchComponent,
     SliderComponent,
-    CartComponent
+    CartComponent,
   ],
   imports: [
-    DragScrollModule,
     BrowserModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    DragScrollModule,
+    EffectsModule.forRoot([CartEffects]),
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
