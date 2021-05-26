@@ -1,0 +1,32 @@
+[
+    {
+       "id": "1",
+      "name":"T-shirt",
+      "price":5,
+      "image":"../assets/T-shirt.png"
+    },
+    {
+        "id": "2",
+      "name":"Pants FORCLAZ",
+      "price":30,
+      "image":"../assets/Pants.png"
+    },
+    {
+        "id": "3",
+      "name":"BACKPACK",
+      "price":60,
+      "image":"../assets/back.png"
+    },
+    {
+        "id": "4",
+      "name":"Panto",
+      "price":40,
+      "image":""
+    },
+    {
+        "id": "5",
+      "name":"Desk",
+      "price":70,
+      "image":""
+    }
+  ]
